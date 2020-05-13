@@ -36,4 +36,4 @@ speech_config = speechsdk.SpeechConfig(subscription=key,
                                        speech_recognition_language='en-GB')
 ```
 
-To change the recognized language, change the value of `'en-GB'` to a different language identifier, such as `'en-US'` for American English, or `'zh-CN'` for Chinese. You can find the list of supported languages in the [Language and voice support for the Speech service docs](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support?WT.mc_id=speechtotextsamples-github-jabenn) on Microsoft Docs.
+To change the recognized language, change the value of `'en-GB'` to a different language identifier, such as `'en-US'` for American English, or `'zh-CN'` for Chinese. You can find the list of supported languages in the [Language and voice support for the Speech service docs](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn) on Microsoft Docs.

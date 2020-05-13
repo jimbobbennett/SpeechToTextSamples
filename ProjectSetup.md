@@ -1,6 +1,6 @@
 # Project Setup Instructions
 
-You will need Python installed to run these samples. Ideally you will need a developer text editor like Visual Studio Code to create some files and view the code. To get this set up, follow the instructions in the [Set up your Python beginner development environment with Visual Studio Code](https://docs.microsoft.com/learn/modules/python-install-vscode/?WT.mc_id=speechtotextsamples-github-jabenn) module on Microsoft Learn.
+You will need Python installed to run these samples. Ideally you will need a developer text editor like Visual Studio Code to create some files and view the code. To get this set up, follow the instructions in the [Set up your Python beginner development environment with Visual Studio Code](https://docs.microsoft.com/learn/modules/python-install-vscode/?WT.mc_id=build2020_ca-github-jabenn) module on Microsoft Learn.
 
 ## Create an environment variables file
 

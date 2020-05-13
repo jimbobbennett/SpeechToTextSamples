@@ -45,7 +45,7 @@ translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=
                                                                    target_languages=('zh-Hans', 'en', 'fr', 'de'))
 ```
 
-To change the recognized language, change the value of `'en-GB'` to a different language identifier, such as `'en-US'` for American English, or `'zh-CN'` for Chinese. You can find the list of supported languages in the [Language and voice support for the Speech service docs](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support?WT.mc_id=speechtotextsamples-github-jabenn) on Microsoft Docs.
+To change the recognized language, change the value of `'en-GB'` to a different language identifier, such as `'en-US'` for American English, or `'zh-CN'` for Chinese. You can find the list of supported languages in the [Language and voice support for the Speech service docs](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn) on Microsoft Docs.
 
 To change the language that the speech is translated into, change the values of `target_languages`. When the text is translated, the `recognized` function is called with a list of translations in a dictionary. You will also need to change the code here to access the languages you have specified.
 
