@@ -73,30 +73,49 @@ def recognized(args):
     global output_text
     global root
     global anim
+    global label
 
-    if args.result.reason == speechsdk.ResultReason.TranslatedSpeech:
-        if args.result.text == "":
-            return
+    if args.result.text == "":
+        return
+    
+    output_text.set(args.result.text)
+    
+    if args.result.text.lower().startswith("blue"):
+        label.destroy()
+        label = Label(root, textvariable=output_text, width=label_width, height=screen_height,
+            font=("Courier", 72), foreground="blue",
+            justify=CENTER, anchor=CENTER, wraplength=label_width)
+        label.pack(padx=padding, pady=padding)
+    
+    if args.result.text.lower().startswith("green"):
+        label.destroy()
+        label = Label(root, textvariable=output_text, width=label_width, height=screen_height,
+            font=("Courier", 72), foreground="green",
+            justify=CENTER, anchor=CENTER, wraplength=label_width)
+        label.pack(padx=padding, pady=padding)
+    
+    if args.result.text.lower().startswith("black"):
+        label.destroy()
+        label = Label(root, textvariable=output_text, width=label_width, height=screen_height,
+            font=("Courier", 72), foreground="black",
+            justify=CENTER, anchor=CENTER, wraplength=label_width)
+        label.pack(padx=padding, pady=padding)
 
-        output_text.set((args.result.text) + "\n\n" + args.result.translations['zh-Hans'])
+    if args.result.text.lower().startswith("mic drop"):
+        time.sleep(1)
+        label.pack_forget()
+        anim.pack_propagate(0) #Don't allow the widgets inside to determine the frame's width / height
+        anim.pack(fill=BOTH, expand=1)
+    elif args.result.text == "Stop.":
+        root.destroy()
 
-        if args.result.text == "Mic drop.":
-            time.sleep(1)
-            label.pack_forget()
-            anim.pack_propagate(0) #Don't allow the widgets inside to determine the frame's width / height
-            anim.pack(fill=BOTH, expand=1)
-        elif args.result.text == "Stop.":
-            root.destroy()
+# Create a speech configuration using the key and region
+speech_config = speechsdk.SpeechConfig(subscription=key, 
+                                       region=region, 
+                                       speech_recognition_language='en-GB')
 
-# Create a speech translation configuration using the key and region
-# This also specifies the languages to translate to
-translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=key, 
-                                                                   region=region,
-                                                                   speech_recognition_language='en-GB',
-                                                                   target_languages=('zh-Hans', 'en'))
-
-# Creates a translation recognizer
-recognizer = speechsdk.translation.TranslationRecognizer(translation_config=translation_config)
+# Create a speech recognizer
+recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
 # Connect up the recognized event
 recognizer.recognized.connect(recognized)

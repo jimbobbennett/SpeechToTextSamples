@@ -25,14 +25,14 @@ speech_config = speechsdk.SpeechConfig(subscription=key,
                                        speech_recognition_language='en-GB')
 
 # Create a speech recognizer
-speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
 # Connect up the recognized event
-speech_recognizer.recognized.connect(recognized)
+recognizer.recognized.connect(recognized)
 
 # Start continuous recognition
 # This happens in the background, so the app continues to run, hence the need for an infinite loop
-speech_recognizer.start_continuous_recognition()
+recognizer.start_continuous_recognition()
 
 print("Say something! Say stop when you are done.")
 

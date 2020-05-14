@@ -158,7 +158,7 @@ All these samples will need the location/region name and key for your Speech to 
 * [Basic Speech To Text](./BasicSpeechToText) - a very basic example that listens to your microphone and converts whatever it hears into text which is output to the console.
 * [Translation](./Translation) - a translation sample that listens to your microphone and outputs what it hears to the console in Chinese, English, French, and German.
 * [Translation with speech](./TranslationWithSpeech) - a translation sample that listens to your microphone and outputs what it hears to the console in Chinese, English, French, and German, as well as playing an the Chinese version through your audio device.
-* [Mic drop](./MicDrop) - a GUI application that listens to your microphone and outputs what it hears in English and Chinese to the GUI. Say "Mic drop" for a special surprise!
+* [UI Control](./UIControl) - a UI application controllable by speech. It has a label showing what you have just said. Say blue, green or black to change the color of the text.
 
 ## Learn more
 
