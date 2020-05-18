@@ -11,16 +11,18 @@ region = os.getenv('REGION')
 stop = False
 
 # Create a speech configuration using the key and region
-speech_config = speechsdk.SpeechConfig(subscription=key, region=region)
+speech_config_cn = speechsdk.SpeechConfig(subscription=key, region=region)
+speech_config_en = speechsdk.SpeechConfig(subscription=key, region=region)
 
 # Sets the synthesis language.
 # The full list of supported languages can be found here:
 # https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech
-language = "zh-CN"
-speech_config.speech_synthesis_language = language
+speech_config_cn.speech_synthesis_language = "zh-CN"
+speech_config_en.speech_synthesis_language = "en-GB"
 
 # Creates a speech synthesizer for the specified language, using the default speaker as audio output.
-speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+speech_synthesizer_cn = speechsdk.SpeechSynthesizer(speech_config=speech_config_cn)
+speech_synthesizer_en = speechsdk.SpeechSynthesizer(speech_config=speech_config_en)
 
 # Create a speech translation configuration using the key and region
 # This also specifies the languages to translate to
@@ -48,7 +50,8 @@ def recognized(args):
         recognizer.stop_continuous_recognition()
 
         # Speak the translated text
-        speech_synthesizer.speak_text(args.result.translations['zh-Hans'])
+        speech_synthesizer_cn.speak_text(args.result.translations['zh-Hans'])
+        speech_synthesizer_en.speak_text(args.result.translations['en'])
 
         # Restart continuous recognition
         recognizer.start_continuous_recognition()
