@@ -6,7 +6,7 @@ This sample demonstrates using speech to control an app.
 
 Before you can run this sample, you will need to ensure you have your Python development environment set up, and do some setup on this project.
 
-Follow the [Project Setup Instructions](./ProjectSetup.md) to get this project set up, including the environment variables, virtual environment and pip packages.
+Follow the [Project Setup Instructions](../ProjectSetup.md) to get this project set up, including the environment variables, virtual environment and pip packages.
 
 ## Run the code
 
