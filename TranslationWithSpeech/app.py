@@ -11,8 +11,8 @@ region = os.getenv('REGION')
 stop = False
 
 # Create a speech configuration using the key and region
-speech_config_cn = speechsdk.SpeechConfig(subscription=key, region=region)
-speech_config_en = speechsdk.SpeechConfig(subscription=key, region=region)
+speech_config_cn = speechsdk.SpeechConfig(subscription='key', region='region')
+speech_config_en = speechsdk.SpeechConfig(subscription='key', region='region')
 
 # Sets the synthesis language.
 # The full list of supported languages can be found here:
@@ -26,8 +26,8 @@ speech_synthesizer_en = speechsdk.SpeechSynthesizer(speech_config=speech_config_
 
 # Create a speech translation configuration using the key and region
 # This also specifies the languages to translate to
-translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=key, 
-                                                                   region=region,
+translation_config = speechsdk.translation.SpeechTranslationConfig(subscription='key', 
+                                                                   region='region',
                                                                    speech_recognition_language='en-GB',
                                                                    target_languages=('zh-Hans', 'en', 'fr', 'de'))
 
