@@ -20,9 +20,11 @@ def recognized(args):
         stop = True
 
 # Create a speech configuration using the key and region
-speech_config = speechsdk.SpeechConfig(subscription=key, 
-                                       region=region, 
-                                       speech_recognition_language='en-GB')
+speech_config = speechsdk.SpeechConfig(subscription='Insert Your Keys Here', 
+                                       region='Insert Your Region Here', 
+                                       speech_recognition_language='en-GB')   # Here 'en-GB' Means that It recognizes your language as English with British Accent
+                                                                              # This can be changed to other languages You Desire. See: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn
+    
 
 # Create a speech recognizer
 recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
