@@ -15,6 +15,7 @@ stop = False
 def recognized(args):
     global stop
     if args.result.reason == speechsdk.ResultReason.TranslatedSpeech:
+#       print("Any Variable   :", args.result.translations['Spoken Language will be converted to this language.'])
         print("Chinese   :", args.result.translations['zh-Hans'])
         print("English   :", args.result.translations['en'])
         print("French    :", args.result.translations['fr'])
@@ -28,6 +29,9 @@ def recognized(args):
 # This also specifies the languages to translate to
 translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=key, 
                                                                    region=region,
+# Here in speech_recognition_language below 'en-GB' Means that It recognizes your language as English with British Accent
+# This can be changed to other languages You Desire. Go to the link below to view available languages. 
+# See: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn
                                                                    speech_recognition_language='en-GB',
                                                                    target_languages=('zh-Hans', 'en', 'fr', 'de'))
 
