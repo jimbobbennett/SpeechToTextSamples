@@ -5,8 +5,8 @@ import azure.cognitiveservices.speech as speechsdk
 
 # Load the speech key and region from the .env file
 load_dotenv()
-key = os.getenv('KEY')
-region = os.getenv('REGION')
+key = os.getenv("KEY")
+region = os.getenv("REGION")
 
 stop = False
 
@@ -24,12 +24,17 @@ speech_config_en.speech_synthesis_language = "en-GB"
 speech_synthesizer_cn = speechsdk.SpeechSynthesizer(speech_config=speech_config_cn)
 speech_synthesizer_en = speechsdk.SpeechSynthesizer(speech_config=speech_config_en)
 
-# Create a speech translation configuration using the key and region
-# This also specifies the languages to translate to
-translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=key, 
+# Create a speech translation configuration using the following:
+#  The API key and region loaded from the .env file
+#  The language that will be recognized, in this example Great British English (en-GB)
+#  The languages to be translated to, in this case Chinese, English, French and German
+#
+# See https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn
+# for the list of supported languages that can be recognized and translated to
+translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=key,
                                                                    region=region,
-                                                                   speech_recognition_language='en-GB',
-                                                                   target_languages=('zh-Hans', 'en', 'fr', 'de'))
+                                                                   speech_recognition_language="en-GB",
+                                                                   target_languages=("zh-Hans", "en", "fr", "de"))
 
 # Creates a translation recognizer
 recognizer = speechsdk.translation.TranslationRecognizer(translation_config=translation_config)
@@ -40,24 +45,25 @@ def recognized(args):
     global stop
     global recognizer
     if args.result.reason == speechsdk.ResultReason.TranslatedSpeech:
-        print("Chinese   :", args.result.translations['zh-Hans'])
-        print("English   :", args.result.translations['en'])
-        print("French    :", args.result.translations['fr'])
-        print("German    :", args.result.translations['de'])
+        print("Chinese   :", args.result.translations["zh-Hans"])
+        print("English   :", args.result.translations["en"])
+        print("French    :", args.result.translations["fr"])
+        print("German    :", args.result.translations["de"])
         print()
 
         # Pause recognition so the spoken text isn't automatically translated
         recognizer.stop_continuous_recognition()
 
         # Speak the translated text
-        speech_synthesizer_cn.speak_text(args.result.translations['zh-Hans'])
-        speech_synthesizer_en.speak_text(args.result.translations['en'])
+        speech_synthesizer_cn.speak_text(args.result.translations["zh-Hans"])
+        speech_synthesizer_en.speak_text(args.result.translations["en"])
 
         # Restart continuous recognition
         recognizer.start_continuous_recognition()
 
-        if args.result.translations['en'] == "Stop.":
+        if args.result.translations["en"] == "Stop.":
             stop = True
+
 
 # Connect up the recognized event
 recognizer.recognized.connect(recognized)

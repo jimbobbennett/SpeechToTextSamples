@@ -25,8 +25,8 @@ The app will launch a UI using Tkinter. Speak into your default microphone in En
 This app is configured to listen for words spoken in English, and output the English text of the spoken words. This configuration is set on line 113:
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=key, 
-                                       region=region, 
+speech_config = speechsdk.SpeechConfig(subscription=key,
+                                       region=region,
                                        speech_recognition_language='en-GB')
 ```
 

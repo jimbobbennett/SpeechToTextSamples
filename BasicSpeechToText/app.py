@@ -5,8 +5,8 @@ import azure.cognitiveservices.speech as speechsdk
 
 # Load the speech key and region from the .env file
 load_dotenv()
-key = os.getenv('KEY')
-region = os.getenv('REGION')
+key = os.getenv("KEY")
+region = os.getenv("REGION")
 
 stop = False
 
@@ -19,13 +19,16 @@ def recognized(args):
     if args.result.text == "Stop.":
         stop = True
 
-# Create a speech configuration using the key and region
-speech_config = speechsdk.SpeechConfig(subscription=key, 
-                                       region=region, 
-# Here in speech_recognition_language below 'en-GB' Means that It recognizes your language as English with British Accent
-# This can be changed to other languages You Desire. Go to the link below to view available languages. 
-# See: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn
-                                       speech_recognition_language='en-GB')
+
+# Create a speech configuration using the following:
+#  The API key and region loaded from the .env file
+#  The language that will be recognized, in this example Great British English (en-GB)
+#
+# See https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?WT.mc_id=build2020_ca-github-jabenn
+# for the list of supported languages that can be recognized
+speech_config = speechsdk.SpeechConfig(subscription=key,
+                                       region=region,
+                                       speech_recognition_language="en-GB")
 
 # Create a speech recognizer
 recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
